@@ -18,7 +18,19 @@ def getInput():
     Returns:
         True, if the PIN is correct.
     """
-    pass
+    print("\nEnter your PIN:")
+    userPIN = input()       # read keyboard input
+    if userPIN.isdigit():   # no non-numeric characters
+        if len(userPIN) == 4: 
+            if userPIN == "1234": 
+                print("Your PIN is correct.\n")
+                return userPIN
+            else:           # PIN is not 1234
+                print("Your PIN is incorrect.")
+        else:               # PIN is not 4 digits long
+            print("Invalid PIN length.  Correct format is: <9876>.")
+    else:                   # PIN has non-numeric character
+        print("Invalid PIN character.  Correct format is: <9876>.")
 
 
 # Main function
@@ -29,7 +41,14 @@ def main():
     Args:
         None
     """
-    pass
+    for i in range(0,3):# loop three times
+        if getInput():  # evaluates as True if a PIN has been returned from getInput()
+            return      # end program if correct PIN is entered
+        if i == 2:      # third try
+            print("\nYour bank card is blocked.\n")
+            exit(1)
+    
+
 
 if __name__ == '__main__':
     # Call Main
